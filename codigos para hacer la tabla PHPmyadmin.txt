@@ -1,0 +1,39 @@
+# Crear Tabla de Habitaciones
+CREATE TABLE habitaciones (
+    id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
+    numero INT,
+    capacidad INT,
+    orientacion VARCHAR(50),
+    ocupado BOOLEAN DEFAULT FALSE
+);
+
+# Crear Tabla de Usuarios
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_usuario VARCHAR(50),
+    contrasena VARCHAR(50),
+    tipo_usuario VARCHAR(20)
+);
+
+# Crear Tabla de Pasajeros
+CREATE TABLE pasajeros (
+    id_pasajero INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    rut VARCHAR(20),
+    id_habitacion INT,
+    fecha_entrada DATETIME,
+    fecha_salida DATETIME,
+    FOREIGN KEY (id_habitacion) REFERENCES habitaciones(id_habitacion)
+);
+
+# Insertar Usuarios
+INSERT INTO usuarios (nombre_usuario, contrasena, tipo_usuario)
+VALUES ('admin', 'contraseña', 'administrador'),
+       ('encargado', 'contraseña', 'encargado');
+
+# Insertar Pasajeros
+INSERT INTO pasajeros (nombre, rut, id_habitacion, fecha_entrada, fecha_salida)
+VALUES ('nombre_pasajero', 'rut_pasajero', id_habitacion, 'fecha_entrada', 'fecha_salida');
+
+# Insertar Habitaciones
+INSERT INTO habitaciones (id_habitacion, numero, capacidad, orientacion, ocupado) VALUES (1, 44, 4, 'valor_orientacion', 0);
